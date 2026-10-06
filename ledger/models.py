@@ -36,12 +36,17 @@ class Authorization:
     amount: Decimal
     booking_day: int
     status: AuthorizationStatus
+    settled_amount: Decimal = Decimal("0")
+
+    @property
+    def active_hold(self) -> Decimal:
+        return self.amount if self.status == AuthorizationStatus.APPROVED else Decimal("0")
 
 
 @dataclass
 class Account:
     account_id: str
     currency: str
-    opening_balance: Decimal
+    opening_balance: Decimal = Decimal("0")
     entries: list[LedgerEntry] = field(default_factory=list)
     authorizations: dict[str, Authorization] = field(default_factory=dict)
