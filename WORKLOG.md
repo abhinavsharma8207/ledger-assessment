@@ -316,3 +316,40 @@ then implement and validate it.
 
 The worklog will be appended as implementation progresses rather than rewritten
 after the fact.
+
+---
+
+## 2026-10-06
+
+### 22:00 — Implemented core domain model
+
+Added the first implementation layer for the ledger domain:
+
+- currency precision handling;
+- decimal quantization helper;
+- immutable ledger entry model;
+- account model;
+- authorization model and authorization states.
+
+Kept ledger balance out of mutable account state so that balances can be derived
+from append-only ledger entries.
+
+Added initial unit tests for AED and BHD rounding behavior.
+
+No event replay, fee calculation, interest calculation, or settlement processing
+has been implemented yet.
+
+## Currency rounding mode
+
+The brief specifies the number of decimal places for AED and BHD but does not
+specify the tie-breaking rounding mode.
+
+Resolution:
+
+The implementation uses `ROUND_HALF_UP` for currency quantization.
+
+Reasoning:
+
+A deterministic rounding mode is required for reproducible calculations and tests.
+The choice is isolated in the money helper so it can be changed without affecting
+the ledger model if a production banking rule requires a different convention.
