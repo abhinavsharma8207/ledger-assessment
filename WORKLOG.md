@@ -99,3 +99,25 @@ default pytest discovery.
 
 The next step is local verification (`pytest`, replay output, clean checkout), then
 one final documentation/architecture pass before submission.
+
+## 2026-10-07
+
+### 05:45 — Completed architecture and trade-offs review
+
+Completed the production architecture and trade-offs document based on the final
+ledger implementation.
+
+Covered:
+
+- append-only growth and snapshot/materialized-projection strategy;
+- value-dated entries and operational impact;
+- maker-checker control for back-valued adjustments;
+- production authorization lifecycle beyond settlement;
+- concurrency and idempotency controls;
+- implementation simplifications and the production risks they defer.
+
+Added a compact production-control matrix tying each control to a failure mode
+exposed by the implementation.
+
+The architecture discussion intentionally describes production extensions rather
+than changing the scope of the in-memory assessment implementation.

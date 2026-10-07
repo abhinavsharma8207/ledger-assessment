@@ -75,6 +75,7 @@ NUMBERS.md
 AMBIGUITIES.md
 REJECTED.md
 WORKLOG.md
+ARCHITECTURE.md
 ```
 
 ## Core design
@@ -117,3 +118,4 @@ rounding remainder is discarded.
 - `AMBIGUITIES.md` — ambiguities and how they were resolved
 - `REJECTED.md` — deliberately incorrect acceptance criteria and rationale
 - `WORKLOG.md` — chronological engineering log
+- `ARCHITECTURE.md` — architecture decisions, production trade-offs, controls, and deferred production risks
